@@ -183,6 +183,8 @@ public class Character : MonoBehaviour
     public float GetMaxHealth() => this.maxHealth;
     public float GetHealth() => this.currentHealth / this.maxHealth;
 
+    public float SetHealth(float health) => this.currentHealth = health;
+
     public void PassiveHeal()
     {
         currentHealth = currentHealth + heal;

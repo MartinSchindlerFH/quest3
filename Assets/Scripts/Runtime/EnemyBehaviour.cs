@@ -19,9 +19,10 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        this.animator = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, this.transform.position);

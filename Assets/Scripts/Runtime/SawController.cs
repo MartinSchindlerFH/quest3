@@ -16,7 +16,7 @@ public class SawController : MonoBehaviour
     [SerializeField] private ParticleSystem sparklingParticles;
 
     [Header("Damage")]
-    [SerializeField] private float damagePerSecond = 30.0f;
+    [SerializeField] private float damagePerSecond = 1f;
 
     private AudioSource audioSource;
 
