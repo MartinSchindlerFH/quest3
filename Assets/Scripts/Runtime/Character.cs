@@ -60,6 +60,8 @@ public class Character : MonoBehaviour
 
     private ParticleSystem walkDust;
 
+    private bool isDead = false;
+
     private void Start()
     {
         this.controller = this.GetComponent<CharacterController>();
@@ -191,11 +193,15 @@ public class Character : MonoBehaviour
         this.currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
     }
 
+    public bool IsDead() => this.isDead = true;
+    public bool NotDead() => this.isDead = false;
+
     void SetAnimationState(Vector2 inputMovement)
     {
         this.animator.SetBool("IsJumping", this.isJumping);
         this.animator.SetBool("IsRunning", inputMovement != Vector2.zero);
         this.animator.SetFloat("MovementForward", inputMovement.magnitude);
+        this.animator.SetBool("IsDead", this.isDead);
     }
 
     void ManageAudio(Vector2 inputMovement)

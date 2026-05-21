@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
 
         if (percent <= 0.0f && !this.isFadingin)
         {
+            this.character.IsDead();
             this.StartCoroutine(this.FadeInCanvas(hudCanvasGroup,gameOverCanvaseGroup));
         }
     }
@@ -67,6 +68,10 @@ public class UIManager : MonoBehaviour
         string coinText = $" {this.statistics.coinCounter} ";
         this.coinCounterText.text = coinText;
 
+        var animator = character.gameObject.GetComponent<Animator>();
+        animator.enabled = true;
+        this.character.NotDead();
+
         this.StartCoroutine(FadeInCanvas(gameOverCanvaseGroup, hudCanvasGroup));
     }
 
@@ -83,7 +88,7 @@ public class UIManager : MonoBehaviour
 
     public void GameFinished()
     {
-        FadeInCanvas(hudCanvasGroup, wonCanvasGroup);
+        this.StartCoroutine(FadeInCanvas(hudCanvasGroup, wonCanvasGroup));
     }
 
     private IEnumerator FadeInCanvas(CanvasGroup oldCanvas, CanvasGroup newCanvas)
